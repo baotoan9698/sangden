@@ -7,6 +7,20 @@ body { margin: 0; background: #000; color: #fff; font-family: Arial, Helvetica, 
 button, a { cursor: pointer; }
 .font-instrument { font-family: 'Instrument Serif', serif; }
 
+@keyframes partner-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.partner-marquee-track {
+  animation: partner-marquee 22s linear infinite;
+  will-change: transform;
+}
+
+.partner-marquee:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+
 @layer components {
   .liquid-glass {
     background: rgba(255, 255, 255, 0.01);
@@ -35,4 +49,5 @@ button, a { cursor: pointer; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .partner-marquee-track { animation: none !important; }
 }
