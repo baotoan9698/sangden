@@ -57,8 +57,6 @@ export default function WaitlistSection() {
             </motion.button>
           </form>
         )}
-
-        <p className="mt-5 text-xs text-white/30">Không spam. Chỉ những cập nhật quan trọng từ cộng đồng VIFC.</p>
       </motion.div>
     </section>
   );

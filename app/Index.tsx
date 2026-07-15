@@ -61,7 +61,7 @@ export default function Index() {
   return (
     <main className="bg-black text-white">
       <section className="relative flex min-h-screen flex-col overflow-hidden bg-black">
-        <video ref={videoRef} className="absolute inset-0 h-full w-full object-cover object-bottom" style={{ opacity: 0 }} src={HERO_VIDEO} muted autoPlay playsInline preload="auto" onCanPlay={handleCanPlay} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
+        <video ref={videoRef} className="absolute inset-0 h-full w-full object-cover object-bottom" style={{ opacity: 0 }} src={HERO_VIDEO} muted autoPlay playsInline preload="auto" onLoadedData={handleCanPlay} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55" />
 
         <nav className="relative z-20 grid grid-cols-2 items-start px-6 py-7 md:grid-cols-3 md:px-8" aria-label="Main navigation">
