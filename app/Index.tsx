@@ -8,6 +8,7 @@ import PhilosophySection from "./components/PhilosophySection";
 import ServicesSection from "./components/ServicesSection";
 import PartnersStatsSection from "./components/PartnersStatsSection";
 import StoriesStackSection from "./components/StoriesStackSection";
+import WaitlistSection from "./components/WaitlistSection";
 
 const HERO_VIDEO = "/hero-video.mp4";
 
@@ -90,6 +91,7 @@ export default function Index() {
       </section>
       <PartnersStatsSection />
       <StoriesStackSection />
+      <WaitlistSection />
       <AboutSection />
       <FeaturedVideoSection />
       <PhilosophySection />
