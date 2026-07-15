@@ -2,7 +2,7 @@
 
 :root { color-scheme: dark; }
 html { scroll-behavior: smooth; background: #000; }
-body { margin: 0; background: #000; color: #fff; font-family: var(--font-karla), sans-serif; }
+body { margin: 0; background: #000; color: #fff; font-family: var(--font-dosis), sans-serif; }
 button, a { cursor: pointer; }
 .font-instrument { font-family: var(--font-instrument), serif; }
 

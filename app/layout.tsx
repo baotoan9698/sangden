@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Karla } from "next/font/google";
+import { Dosis, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 
-const karla = Karla({
+const dosis = Dosis({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-karla",
+  variable: "--font-dosis",
   display: "swap",
 });
 
@@ -22,5 +22,5 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="vi"><body className={`${karla.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
+  return <html lang="vi"><body className={`${dosis.variable} ${instrumentSerif.variable}`}>{children}</body></html>;
 }
