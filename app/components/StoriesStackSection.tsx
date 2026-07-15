@@ -1,21 +1,26 @@
+import Image from "next/image";
+
 const stories = [
   {
     eyebrow: "Khởi nguồn",
     title: <>Câu chuyện bắt đầu từ miền đất hứa</>,
     description: "Nơi bắt đầu từ những người đến trước — những người nhìn thấy tiềm năng của một trung tâm tài chính quốc tế trước khi đường chân trời kịp đổi màu.",
-    gradient: "bg-[radial-gradient(circle_at_80%_35%,_#f2cd35_0%,_#bd7d16_28%,_#6d3408_57%,_#170a02_100%)]",
+    image: "/stories/stories-1.jpg",
+    imageAlt: "Những người tiên phong tiến về thành phố tương lai",
   },
   {
     eyebrow: "Tầm nhìn",
     title: <>IFC không phải tòa nhà —<br /><em className="italic">là cỗ máy hút vốn</em></>,
     description: "Trung tâm tài chính quốc tế mở ra một ngôn ngữ mới cho dòng vốn, công nghệ và những ý tưởng có khả năng định hình tương lai. Một hệ sinh thái được kiến tạo để kết nối Việt Nam với thế giới.",
-    gradient: "bg-[radial-gradient(circle_at_12%_15%,_#c3e5f5_0%,_#69a8d2_35%,_#1d5794_72%,_#082956_100%)]",
+    image: "/stories/stories-2.jpg",
+    imageAlt: "Những người đến trước trên hành trình kiến tạo miền đất hứa",
   },
   {
     eyebrow: "Cơ hội",
     title: <>Khi VIFC vừa mở cửa —<br /><em className="italic">ai ngồi trước, thắng.</em></>,
     description: "Cơ hội không chờ đợi. Những tổ chức tiên phong sẽ là người đặt nền móng, tạo ra tiêu chuẩn và sở hữu lợi thế trong một thị trường đang chuyển mình mạnh mẽ.",
-    gradient: "bg-[radial-gradient(circle_at_24%_0%,_#a8d5ee_0%,_#568fc0_35%,_#174f8c_73%,_#062849_100%)]",
+    image: "/stories/stories-3.jpg",
+    imageAlt: "Toàn cảnh trung tâm tài chính quốc tế tại Thành phố Hồ Chí Minh",
   },
 ];
 
@@ -47,8 +52,10 @@ export default function StoriesStackSection() {
               <p className="text-[10px] uppercase tracking-[0.18em] text-black/35">VIFC HCMC · Sáng Đèn 2026</p>
             </div>
 
-            <div className={`relative min-h-[36vh] md:min-h-0 ${story.gradient}`}>
-              <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.16),transparent_42%,rgba(0,0,0,0.12))]" />
+            <div className="relative min-h-[36vh] overflow-hidden bg-black md:min-h-0">
+              <Image src={story.image} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="scale-110 object-cover object-center opacity-45 blur-xl" aria-hidden="true" />
+              <Image src={story.image} alt={story.imageAlt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-contain object-center" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/5" />
               <div className="absolute inset-x-8 bottom-8 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-white/65 md:inset-x-10">
                 <span>GOE Alliance</span><span>Scroll to explore</span>
               </div>
