@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useRef } from "react";
-import { Globe } from "lucide-react";
+import { Menu, Sparkles } from "lucide-react";
 import AboutSection from "./components/AboutSection";
 import FeaturedVideoSection from "./components/FeaturedVideoSection";
 import PhilosophySection from "./components/PhilosophySection";
@@ -61,25 +61,29 @@ export default function Index() {
         <video ref={videoRef} className="absolute inset-0 h-full w-full object-cover object-bottom" style={{ opacity: 0 }} src={HERO_VIDEO} muted autoPlay playsInline preload="auto" onCanPlay={handleCanPlay} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55" />
 
-        <nav className="relative z-20 px-6 py-6" aria-label="Main navigation">
-          <div className="liquid-glass mx-auto flex max-w-5xl items-center justify-between rounded-full px-6 py-3">
-            <div className="relative z-10 flex items-center">
-              <Globe size={24} aria-hidden="true" />
-              <span className="ml-2 text-lg font-semibold">Asme</span>
-              <div className="ml-8 hidden gap-8 md:flex">
-                {['Features', 'Pricing', 'About'].map((item) => <a key={item} href={`#${item.toLowerCase()}`} className="text-sm font-medium text-white/80 hover:text-white">{item}</a>)}
-              </div>
-            </div>
-            <div className="relative z-10 flex items-center gap-4">
-              <button className="text-sm font-medium">Sign Up</button>
-              <button className="liquid-glass rounded-full px-6 py-2 text-sm font-medium"><span className="relative z-10">Login</span></button>
-            </div>
+        <nav className="relative z-20 grid grid-cols-2 items-start px-6 py-7 md:grid-cols-3 md:px-8" aria-label="Main navigation">
+          <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-white md:text-sm">
+            <Sparkles size={25} strokeWidth={1.6} aria-hidden="true" />
+            <span>GOE Alliance · 2026</span>
           </div>
+
+          <a href="#" className="font-instrument hidden justify-self-center text-3xl leading-none tracking-wide text-white md:block" aria-label="Sáng Đèn home">
+            Sáng <em className="italic">Đèn</em>
+          </a>
+
+          <button className="flex items-center gap-3 justify-self-end text-sm font-semibold uppercase tracking-wider text-white md:text-base" aria-label="Open menu">
+            <span>Menu</span><Menu size={21} strokeWidth={1.5} />
+          </button>
         </nav>
 
-        <div className="relative z-10 flex flex-1 -translate-y-[20%] flex-col items-center justify-center px-6 py-12 text-center">
-          <h1 className="font-instrument whitespace-nowrap text-7xl leading-[0.82] tracking-tight md:text-8xl lg:text-9xl">Chiến dịch  <em className="italic">sáng đèn</em>.</h1>
-          <p className="mt-9 max-w-lg text-sm leading-relaxed text-white/65 md:text-base">Chiến dịch truyền thông và thắp sáng cộng đồng về VIFC HCM</p>
+        <div className="relative z-10 mt-auto px-6 pb-8 md:px-8 md:pb-7">
+          <div className="max-w-2xl">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-white md:text-sm">Chiến dịch cộng đồng</p>
+            <h1 className="font-instrument max-w-xl text-5xl leading-[0.94] tracking-tight text-white md:text-6xl lg:text-7xl">
+              Chiến dịch <em className="italic">Sáng Đèn</em>
+            </h1>
+            <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/75 md:text-base">Chiến dịch truyền thông và thắp sáng cộng đồng về VIFC HCM</p>
+          </div>
         </div>
       </section>
       <AboutSection />
