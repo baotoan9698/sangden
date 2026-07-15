@@ -23,7 +23,7 @@ export default function StoriesStackSection() {
   return (
     <section className="relative bg-[#f1ede3] text-[#17130d]">
       <header className="border-b border-black/10 px-6 py-8 md:px-10 md:py-10">
-        <p className="font-instrument text-xl italic text-[#9b6b20] md:text-2xl">The Long Game: Dispatches from Inside VIFC</p>
+        <p className="font-instrument text-center text-2xl font-bold uppercase tracking-wide text-[#9b6b20] md:whitespace-nowrap md:text-4xl">The Long Game: Dispatches from Inside VIFC</p>
       </header>
 
       <div>
