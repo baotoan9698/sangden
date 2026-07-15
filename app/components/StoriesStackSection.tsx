@@ -56,9 +56,6 @@ export default function StoriesStackSection() {
               <Image src={story.image} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="scale-110 object-cover object-center opacity-45 blur-xl" aria-hidden="true" />
               <Image src={story.image} alt={story.imageAlt} fill sizes="(min-width: 768px) 50vw, 100vw" className="object-contain object-center" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/5" />
-              <div className="absolute inset-x-8 bottom-8 flex items-center justify-between text-[10px] uppercase tracking-[0.18em] text-white/65 md:inset-x-10">
-                <span>GOE Alliance</span><span>Scroll to explore</span>
-              </div>
             </div>
           </article>
         ))}

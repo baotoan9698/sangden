@@ -1,18 +1,12 @@
 import type { Metadata } from "next";
-import { Dosis, Instrument_Serif } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 import "./globals.css";
 
-const dosis = Dosis({
-  subsets: ["latin", "latin-ext"],
-  variable: "--font-dosis",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
+const notoSans = Noto_Sans({
+  subsets: ["latin", "vietnamese"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
-  variable: "--font-instrument",
+  variable: "--font-noto-sans",
   display: "swap",
 });
 
@@ -27,7 +21,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preload" href="/hero-video.mp4" as="video" type="video/mp4" />
       </head>
-      <body className={`${dosis.variable} ${instrumentSerif.variable}`}>{children}</body>
+      <body className={notoSans.variable}>{children}</body>
     </html>
   );
 }
