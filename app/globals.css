@@ -13,7 +13,7 @@ button, a { cursor: pointer; }
 }
 
 .partner-marquee-track {
-  animation: partner-marquee 22s linear infinite;
+  animation: partner-marquee 26s linear infinite;
   will-change: transform;
 }
 

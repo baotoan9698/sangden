@@ -18,10 +18,14 @@ export default function PartnersStatsSection() {
 
         <div className="partner-marquee flex min-w-0 flex-1 items-center overflow-hidden" aria-label={`Đối tác: ${partners.join(", ")}`}>
           <div className="partner-marquee-track flex w-max items-center">
-            {[...partners, ...partners].map((partner, index) => (
-              <span key={`${partner}-${index}`} className="mx-8 shrink-0 text-xs font-semibold uppercase tracking-[0.08em] text-black/70 md:mx-12 md:text-sm">
-                {partner}
-              </span>
+            {[0, 1].map((group) => (
+              <div key={group} className="flex min-w-[calc(100vw-155px)] shrink-0 items-center justify-around gap-16 pr-16 md:min-w-[calc(100vw-285px)]" aria-hidden={group === 1}>
+                {partners.map((partner) => (
+                  <span key={`${group}-${partner}`} className="shrink-0 text-xs font-semibold uppercase tracking-[0.08em] text-black/70 md:text-sm">
+                    {partner}
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
