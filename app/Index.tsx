@@ -7,7 +7,7 @@ import FeaturedVideoSection from "./components/FeaturedVideoSection";
 import PhilosophySection from "./components/PhilosophySection";
 import ServicesSection from "./components/ServicesSection";
 
-const HERO_VIDEO = "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260405_074625_a81f018a-956b-43fb-9aee-4d1508e30e6a.mp4";
+const HERO_VIDEO = "/hero-video.mp4";
 
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -78,7 +78,6 @@ export default function Index() {
         </nav>
 
         <div className="relative z-10 flex flex-1 -translate-y-[20%] flex-col items-center justify-center px-6 py-12 text-center">
-          <p className="mb-6 text-xs uppercase tracking-[0.28em] text-white/65 md:text-sm">Chiến dịch cộng đồng · GOE Alliance · 2026</p>
           <h1 className="font-instrument whitespace-nowrap text-7xl leading-[0.82] tracking-tight md:text-8xl lg:text-9xl">Chiến dịch  <em className="italic">sáng đèn</em>.</h1>
           <p className="mt-9 max-w-lg text-sm leading-relaxed text-white/65 md:text-base">Chiến dịch truyền thông và thắp sáng cộng đồng về VIFC HCM</p>
         </div>
