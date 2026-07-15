@@ -79,7 +79,7 @@ export default function Index() {
 
         <div className="relative z-10 flex flex-1 -translate-y-[20%] flex-col items-center justify-center px-6 py-12 text-center">
           <p className="mb-6 text-xs uppercase tracking-[0.28em] text-white/65 md:text-sm">Chiến dịch cộng đồng · GOE Alliance · 2026</p>
-          <h1 className="font-instrument whitespace-nowrap text-7xl leading-[0.82] tracking-tight md:text-8xl lg:text-9xl">Know it then <em className="italic">all</em>.</h1>
+          <h1 className="font-instrument whitespace-nowrap text-7xl leading-[0.82] tracking-tight md:text-8xl lg:text-9xl">Chiến dịch  <em className="italic">sáng đèn</em>.</h1>
           <div className="mt-9 flex items-center gap-4 text-left">
             <span className="h-12 w-px bg-white/50" />
             <div><p className="text-sm font-semibold uppercase tracking-[0.2em]">Chiến Dịch</p><p className="font-instrument text-3xl italic">Sáng Đèn</p></div>
