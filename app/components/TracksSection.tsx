@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const tracks = [
   {
@@ -14,6 +15,8 @@ const tracks = [
   },
   {
     number: "02",
+    image: "/tracks/vifc-challenge.png",
+    imageAlt: "VIFC Challenge",
     label: "Hợp phần 02 · Innovation Challenge",
     title: "VIFC Challenge",
     description: "Cuộc thi xây dựng giải pháp tài chính số cho VIFC. Không chỉ pitch ý tưởng — các đội phát triển prototype thật, kết nối Champion thật và hướng tới khả năng pilot thực tế.",
@@ -22,6 +25,8 @@ const tracks = [
   },
   {
     number: "03",
+    image: "/tracks/vifc-builder-network.png",
+    imageAlt: "VIFC Builder Network",
     label: "Hợp phần 03 · Builder Network",
     title: "VIFC Builder Network",
     description: "Mạng lưới dành cho 10.000 Builder tiên phong — nơi nguồn lực, tri thức và cơ hội hợp tác được kết nối để cùng xây dựng hệ sinh thái tài chính quốc tế tại TP.HCM.",
@@ -43,8 +48,21 @@ export default function TracksSection() {
         {tracks.map((track, index) => (
           <article key={track.number} className="grid min-h-[620px] grid-cols-1 border-b border-black/10 md:grid-cols-2">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className={`relative flex min-h-72 items-center justify-center overflow-hidden bg-[#e5e0d6] ${index % 2 === 1 ? "md:order-2" : ""}`}>
-              <div className="absolute h-72 w-72 rounded-full bg-[#d6aa56]/10 blur-3xl" />
-              <span className="relative text-[9rem] font-semibold leading-none tracking-tighter text-[#1a2f5d]/[0.07] md:text-[13rem] lg:text-[16rem]">{track.number}</span>
+              {track.image && track.imageAlt ? (
+                <Image
+                  src={track.image}
+                  alt={track.imageAlt}
+                  fill
+                  quality={90}
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-[1.035]"
+                />
+              ) : (
+                <>
+                  <div className="absolute h-72 w-72 rounded-full bg-[#d6aa56]/10 blur-3xl" />
+                  <span className="relative text-[9rem] font-semibold leading-none tracking-tighter text-[#1a2f5d]/[0.07] md:text-[13rem] lg:text-[16rem]">{track.number}</span>
+                </>
+              )}
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: index % 2 === 0 ? 35 : -35 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.75 }} className={`flex flex-col justify-center bg-[#f1ede3] px-6 py-16 md:px-10 lg:px-14 ${index % 2 === 1 ? "md:order-1" : ""}`}>
