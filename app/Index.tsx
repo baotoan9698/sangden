@@ -2,13 +2,13 @@
 
 import { useCallback, useRef } from "react";
 import { Menu, Sparkles } from "lucide-react";
-import AboutSection from "./components/AboutSection";
-import FeaturedVideoSection from "./components/FeaturedVideoSection";
-import PhilosophySection from "./components/PhilosophySection";
 import ServicesSection from "./components/ServicesSection";
 import PartnersStatsSection from "./components/PartnersStatsSection";
 import StoriesStackSection from "./components/StoriesStackSection";
 import WaitlistSection from "./components/WaitlistSection";
+import FirstSessionsSection from "./components/FirstSessionsSection";
+import TracksSection from "./components/TracksSection";
+import PioneerSection from "./components/PioneerSection";
 
 const HERO_VIDEO = "/hero-video.mp4";
 
@@ -92,10 +92,10 @@ export default function Index() {
       <PartnersStatsSection />
       <StoriesStackSection />
       <WaitlistSection />
-      <AboutSection />
-      <FeaturedVideoSection />
-      <PhilosophySection />
+      <FirstSessionsSection />
+      <TracksSection />
       <ServicesSection />
+      <PioneerSection />
     </main>
   );
 }
