@@ -9,6 +9,7 @@ import WaitlistSection from "./components/WaitlistSection";
 import FirstSessionsSection from "./components/FirstSessionsSection";
 import TracksSection from "./components/TracksSection";
 import PioneerSection from "./components/PioneerSection";
+import Footer from "./components/Footer";
 
 const HERO_VIDEO = "/hero-video.mp4";
 
@@ -96,6 +97,7 @@ export default function Index() {
       <TracksSection />
       <ServicesSection />
       <PioneerSection />
+      <Footer />
     </main>
   );
 }
