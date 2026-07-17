@@ -46,8 +46,8 @@ export default function TracksSection() {
 
       <div>
         {tracks.map((track, index) => (
-          <article key={track.number} className="grid min-h-[620px] grid-cols-1 border-b border-black/10 md:grid-cols-2">
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className={`relative flex min-h-72 items-center justify-center overflow-hidden bg-[#e5e0d6] ${index % 2 === 1 ? "md:order-2" : ""}`}>
+          <article key={track.number} className="grid grid-cols-1 border-b border-black/10 md:grid-cols-2">
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className={`group relative flex aspect-square w-full self-start items-center justify-center overflow-hidden bg-[#e5e0d6] ${index % 2 === 1 ? "md:order-2" : ""}`}>
               {track.image && track.imageAlt ? (
                 <Image
                   src={track.image}
@@ -55,7 +55,7 @@ export default function TracksSection() {
                   fill
                   quality={90}
                   sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover object-center transition-transform duration-700 hover:scale-[1.035]"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.035]"
                 />
               ) : (
                 <>
