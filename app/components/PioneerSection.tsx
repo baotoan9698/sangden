@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Check } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Check, X } from "lucide-react";
 import Image from "next/image";
+import { FormEvent, useState } from "react";
 
 const benefits = [
   { title: "Danh xưng chính thống", text: "Được ghi nhận là Builder tiên phong của cộng đồng VIFC — bảo chứng bởi các đơn vị đồng hành uy tín." },
@@ -12,6 +13,14 @@ const benefits = [
 ];
 
 export default function PioneerSection() {
+  const [formOpen, setFormOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitted(true);
+  };
+
   return (
     <>
       <section className="relative flex min-h-[430px] items-center overflow-hidden bg-[#0a0b18] px-6 py-24 text-white md:px-10 lg:px-14">
@@ -52,7 +61,97 @@ export default function PioneerSection() {
           </ul>
 
           <p className="mt-7 text-sm text-black/60"><strong className="text-black">Miễn phí.</strong> Giới hạn <strong className="text-black">10.000</strong>. Xét duyệt theo đợt.</p>
-          <a href="#" className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#d6aa56] px-7 py-4 text-sm font-bold text-[#17130d] transition-colors hover:bg-[#e7c979]">Đăng ký ngay <ArrowRight size={17} /></a>
+          <button
+            type="button"
+            aria-expanded={formOpen}
+            aria-controls="pioneer-registration-form"
+            onClick={() => setFormOpen(true)}
+            className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#d6aa56] px-7 py-4 text-sm font-bold text-[#17130d] transition-colors hover:bg-[#e7c979]"
+          >
+            Đăng ký ngay
+            <ArrowRight size={17} />
+          </button>
+
+          <AnimatePresence initial={false}>
+            {formOpen && (
+              <motion.div
+                id="pioneer-registration-form"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="pioneer-registration-title"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-4 md:p-8"
+              >
+                <button type="button" aria-label="Đóng biểu mẫu đăng ký" onClick={() => setFormOpen(false)} className="absolute inset-0 bg-black/75 backdrop-blur-md" />
+                <motion.form
+                  onSubmit={handleSubmit}
+                  initial={{ opacity: 0, y: 30, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 20, scale: 0.98 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="relative my-auto max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-[28px] border border-black/10 bg-[#f1ede3] p-5 text-[#17130d] shadow-[0_30px_100px_rgba(0,0,0,0.45)] md:max-h-[calc(100vh-4rem)] md:p-8"
+                >
+                  <button type="button" aria-label="Đóng" onClick={() => setFormOpen(false)} className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/60 transition hover:bg-white md:right-6 md:top-6">
+                    <X size={18} />
+                  </button>
+                  <div className="mb-6">
+                    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#9b6b20]">Thông tin đăng ký</p>
+                    <h3 id="pioneer-registration-title" className="mt-2 pr-12 text-2xl font-bold tracking-tight md:text-3xl">Gia nhập cộng đồng VIFC</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-black/50">Điền thông tin để chúng tôi hiểu rõ hơn về nhu cầu kết nối của bạn.</p>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="text-xs font-semibold text-black/65">
+                      Họ và tên <span className="text-[#9b6b20]">*</span>
+                      <input required name="fullName" autoComplete="name" placeholder="Nguyễn Văn A" className="mt-2 w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20" />
+                    </label>
+                    <label className="text-xs font-semibold text-black/65">
+                      Tên doanh nghiệp
+                      <input name="company" autoComplete="organization" placeholder="Tên doanh nghiệp" className="mt-2 w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20" />
+                    </label>
+                    <label className="text-xs font-semibold text-black/65">
+                      Email <span className="text-[#9b6b20]">*</span>
+                      <input required type="email" name="email" autoComplete="email" placeholder="you@company.com" className="mt-2 w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20" />
+                    </label>
+                    <label className="text-xs font-semibold text-black/65">
+                      Số điện thoại <span className="text-[#9b6b20]">*</span>
+                      <input required type="tel" name="phone" autoComplete="tel" placeholder="09xx xxx xxx" className="mt-2 w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20" />
+                    </label>
+                  </div>
+
+                  <label className="mt-4 block text-xs font-semibold text-black/65">
+                    Mục tiêu chính của bạn khi tham gia cộng đồng VIFC là gì? <span className="text-[#9b6b20]">*</span>
+                    <select required name="primaryGoal" defaultValue="" className="mt-2 w-full rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20">
+                      <option value="" disabled>Chọn một nhu cầu</option>
+                      <option>Kết nối đối tác và nhà đầu tư</option>
+                      <option>Tiếp cận kiến thức và chuyên gia</option>
+                      <option>Tìm kiếm cơ hội kinh doanh quốc tế</option>
+                      <option>Tham gia dự án và hoạt động cộng đồng</option>
+                      <option>Khác</option>
+                    </select>
+                  </label>
+
+                  <label className="mt-4 block text-xs font-semibold text-black/65">
+                    Bạn đang quan tâm nhất đến chủ đề hoặc cơ hội nào tại VIFC?
+                    <textarea name="interests" rows={4} placeholder="Chia sẻ ngắn về lĩnh vực, dự án hoặc kết nối bạn đang tìm kiếm..." className="mt-2 w-full resize-none rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm leading-relaxed text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20" />
+                  </label>
+
+                  <button type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#17130d] px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-[#9b6b20]">
+                    Gửi đăng ký <ArrowRight size={17} />
+                  </button>
+
+                  {submitted && (
+                    <p role="status" className="mt-4 rounded-xl border border-[#9b6b20]/20 bg-[#d6aa56]/10 px-4 py-3 text-center text-xs leading-relaxed text-black/60">
+                      Form UI đã hoạt động. Dữ liệu hiện chưa được lưu; bước tiếp theo có thể kết nối với Google Sheets.
+                    </p>
+                  )}
+                </motion.form>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </section>
     </>
