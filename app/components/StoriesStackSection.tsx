@@ -10,14 +10,14 @@ const stories = [
   },
   {
     eyebrow: "Tầm nhìn",
-    title: <>IFC không phải tòa nhà —<br /><em className="italic">là cỗ máy hút vốn</em></>,
+    title: <>IFC không phải <span className="whitespace-nowrap">tòa nhà —</span><br /><em className="italic">là cỗ máy hút vốn</em></>,
     description: "Trung tâm tài chính quốc tế mở ra một ngôn ngữ mới cho dòng vốn, công nghệ và những ý tưởng có khả năng định hình tương lai. Một hệ sinh thái được kiến tạo để kết nối Việt Nam với thế giới.",
     image: "/stories/stories-2.jpg",
     imageAlt: "Những người đến trước trên hành trình kiến tạo miền đất hứa",
   },
   {
     eyebrow: "Cơ hội",
-    title: <>Khi VIFC vừa mở cửa —<br /><em className="italic">ai ngồi trước, thắng.</em></>,
+    title: <>Khi VIFC vừa mở cửa —<br /><em className="italic">ai ngồi trước, thắng</em></>,
     description: "Cơ hội không chờ đợi. Những tổ chức tiên phong sẽ là người đặt nền móng, tạo ra tiêu chuẩn và sở hữu lợi thế trong một thị trường đang chuyển mình mạnh mẽ.",
     image: "/stories/stories-3.jpg",
     imageAlt: "Toàn cảnh trung tâm tài chính quốc tế tại Thành phố Hồ Chí Minh",
@@ -27,8 +27,11 @@ const stories = [
 export default function StoriesStackSection() {
   return (
     <section className="relative bg-[#f1ede3] text-[#17130d]">
-      <header className="border-b border-black/10 px-6 py-8 md:px-10 md:py-10">
-        <p className="font-instrument text-center text-2xl font-bold uppercase tracking-wide text-[#9b6b20] md:whitespace-nowrap md:text-4xl">The Long Game: Dispatches from Inside VIFC</p>
+      <header className="border-b border-black/10 px-6 py-12 md:px-10 md:py-16">
+        <h2 className="font-instrument mx-auto max-w-6xl text-center text-2xl font-bold leading-[1.25] tracking-tight text-[#9b6b20] md:text-4xl lg:text-5xl">
+          VIFC không phải câu chuyện của một chính sách — đó là câu chuyện định hình lại vị thế của Việt Nam trong bản đồ tài chính thế giới.
+          <span className="mt-4 block font-normal italic text-black/45">Chương đầu tiên, bắt đầu từ hôm nay.</span>
+        </h2>
       </header>
 
       <div>
@@ -48,8 +51,6 @@ export default function StoriesStackSection() {
                 <h2 className="font-instrument text-4xl leading-[1.02] tracking-tight text-[#9b6b20] md:text-5xl lg:text-6xl">{story.title}</h2>
                 <p className="mt-7 max-w-lg text-sm leading-7 text-black/55 md:text-base">{story.description}</p>
               </div>
-
-              <p className="text-[10px] uppercase tracking-[0.18em] text-black/35">VIFC HCMC · Sáng Đèn 2026</p>
             </div>
 
             <div className="relative min-h-[36vh] overflow-hidden bg-black md:min-h-0">

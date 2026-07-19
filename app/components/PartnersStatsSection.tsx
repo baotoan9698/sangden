@@ -3,7 +3,7 @@
 import { useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const partners = ["VIFC HCMC", "SGGP", "TTXVN", "BNI Việt Nam", "SVF", "MBV", "FTU"];
+const partnerLine = "Tổ chức bởi: IFC Pass In Việt Nam · Bảo trợ bởi: VIFC-HCMC và GOE Alliance · Tài trợ bởi: Tether, Mexc Venture · Đồng hành bởi: MBV, BNI, SFV";
 
 const stats = [
   { value: 3, suffix: "", lineOne: "Buổi đã", lineTwo: "diễn ra" },
@@ -17,22 +17,14 @@ export default function PartnersStatsSection() {
 
   return (
     <section className="border-y border-black/10 bg-[#f1efe8] text-black">
-      <div className="flex h-16 items-stretch overflow-hidden border-b border-black/10 md:h-20">
-        <div className="relative z-10 flex shrink-0 items-center border-r border-black/10 bg-[#f1efe8] px-5 md:px-10 lg:px-12">
-          <p className="max-w-[115px] text-[9px] font-semibold uppercase leading-relaxed tracking-[0.2em] text-black/45 md:max-w-none md:text-[10px]">
-            Được bảo trợ và đồng hành bởi
-          </p>
-        </div>
-
-        <div className="partner-marquee flex min-w-0 flex-1 items-center overflow-hidden" aria-label={`Đối tác: ${partners.join(", ")}`}>
+      <div className="flex h-20 items-stretch overflow-hidden border-b border-black/10 md:h-24">
+        <div className="partner-marquee flex min-w-0 flex-1 items-center overflow-hidden" aria-label={partnerLine}>
           <div className="partner-marquee-track flex w-max items-center">
             {[0, 1].map((group) => (
-              <div key={group} className="flex min-w-[calc(100vw-155px)] shrink-0 items-center justify-around gap-16 pr-16 md:min-w-[calc(100vw-285px)]" aria-hidden={group === 1}>
-                {partners.map((partner) => (
-                  <span key={`${group}-${partner}`} className="shrink-0 text-xs font-semibold uppercase tracking-[0.08em] text-black/70 md:text-sm">
-                    {partner}
-                  </span>
-                ))}
+              <div key={group} className="flex shrink-0 items-center pr-20" aria-hidden={group === 1}>
+                <span className="whitespace-nowrap text-base font-extrabold uppercase tracking-[0.055em] text-black/80 md:text-xl lg:text-2xl">
+                  {partnerLine}
+                </span>
               </div>
             ))}
           </div>

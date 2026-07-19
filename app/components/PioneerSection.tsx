@@ -23,11 +23,19 @@ export default function PioneerSection() {
 
   return (
     <>
-      <section className="relative flex min-h-[430px] items-center overflow-hidden bg-[#0a0b18] px-6 py-24 text-white md:px-10 lg:px-14">
-        <div className="absolute inset-0 bg-[linear-gradient(105deg,#0a0b18_0%,#1a3157_45%,#9b6b20_100%)] opacity-95" />
-        <div className="absolute -right-20 -top-32 h-96 w-96 rounded-full bg-[#d6aa56]/25 blur-3xl" />
-        <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.75 }} className="relative max-w-4xl text-5xl font-semibold leading-[1.08] tracking-tight md:text-7xl">
-          Hãy cùng nhau đến sớm<br />và thắp sáng VIFC
+      <section className="relative flex min-h-[430px] w-full items-center overflow-hidden bg-[#0a0b18] px-6 py-16 text-white md:aspect-[1680/942] md:min-h-0 md:px-10 md:py-12 lg:px-14">
+        <Image
+          src="/pioneer/vifc-light-up-banner.png"
+          alt="Tòa nhà VIFC được thắp sáng"
+          fill
+          quality={95}
+          sizes="100vw"
+          className="object-contain object-center"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(4,8,36,0.08)_20%,rgba(4,8,36,0.4)_62%,rgba(4,8,36,0.82)_100%)]" />
+        <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.75 }} className="relative ml-auto w-full text-right text-[clamp(1.35rem,4vw,4.5rem)] font-semibold leading-[1.08] tracking-tight drop-shadow-[0_3px_20px_rgba(0,0,0,0.6)]">
+          <span className="block whitespace-nowrap">Hãy cùng nhau đến sớm</span>
+          <span className="block whitespace-nowrap">và thắp sáng VIFC</span>
         </motion.h2>
       </section>
 

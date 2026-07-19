@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useRef } from "react";
-import { Menu, Sparkles } from "lucide-react";
 import ServicesSection from "./components/ServicesSection";
 import PartnersStatsSection from "./components/PartnersStatsSection";
 import StoriesStackSection from "./components/StoriesStackSection";
@@ -11,7 +10,7 @@ import TracksSection from "./components/TracksSection";
 import PioneerSection from "./components/PioneerSection";
 import Footer from "./components/Footer";
 
-const HERO_VIDEO = "/hero-video.mp4";
+const HERO_VIDEO = "/hero-video.mp4?v=1080p-slow90";
 
 export default function Index() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -62,33 +61,19 @@ export default function Index() {
   return (
     <main className="bg-black text-white">
       <section className="relative flex min-h-screen flex-col overflow-hidden bg-black">
-        <video ref={videoRef} className="absolute inset-0 h-full w-full object-cover object-bottom" style={{ opacity: 0 }} src={HERO_VIDEO} muted autoPlay playsInline preload="auto" onLoadedData={handleCanPlay} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
+        <video ref={videoRef} className="absolute inset-0 h-full w-full object-cover object-center" style={{ opacity: 0 }} src={HERO_VIDEO} muted autoPlay playsInline preload="auto" onLoadedData={handleCanPlay} onTimeUpdate={handleTimeUpdate} onEnded={handleEnded} />
         <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55" />
 
-        <nav className="relative z-20 grid grid-cols-2 items-start px-6 py-7 md:grid-cols-3 md:px-8" aria-label="Main navigation">
-          <div className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-white md:text-sm">
-            <Sparkles size={25} strokeWidth={1.6} aria-hidden="true" />
-            <span>GOE Alliance · 2026</span>
-          </div>
-
-          <a href="#" className="font-instrument hidden justify-self-center text-3xl leading-none tracking-wide text-white md:block" aria-label="Sáng Đèn home">
-            Sáng <em className="italic">Đèn</em>
-          </a>
-
-          <button className="flex items-center gap-3 justify-self-end text-sm font-semibold uppercase tracking-wider text-white md:text-base" aria-label="Open menu">
-            <span>Menu</span><Menu size={21} strokeWidth={1.5} />
-          </button>
-        </nav>
-
-        <div className="relative z-10 mt-auto px-6 pb-8 md:px-8 md:pb-7">
-          <div className="max-w-2xl">
-            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.12em] text-white md:text-sm">Chiến dịch cộng đồng</p>
-            <h1 className="font-instrument max-w-xl text-5xl leading-[0.94] tracking-tight text-white md:text-6xl lg:text-7xl">
-              Chiến dịch <em className="italic">Sáng Đèn</em>
+        <nav className="relative z-20 flex justify-center px-5 py-7 md:px-8 md:py-8" aria-label="Main navigation">
+          <a href="#" className="flex flex-col items-center text-center" aria-label="Chiến Dịch Sáng Đèn home">
+            <h1 className="whitespace-nowrap bg-gradient-to-b from-white via-[#fff1b3] to-[#e7b928] bg-clip-text py-2 text-[clamp(1.55rem,3.4vw,3.5rem)] font-extrabold uppercase leading-[1.2] tracking-[0.035em] text-transparent drop-shadow-[0_3px_14px_rgba(0,0,0,0.5)]">
+              Chiến Dịch Sáng Đèn
             </h1>
-            <p className="mt-4 max-w-lg text-sm leading-relaxed text-white/75 md:text-base">Chiến dịch truyền thông và thắp sáng cộng đồng về VIFC HCM</p>
-          </div>
-        </div>
+            <span className="mt-2.5 whitespace-nowrap text-[clamp(0.55rem,0.95vw,0.9rem)] font-semibold tracking-[0.01em] text-white/90 [text-shadow:0_2px_10px_rgba(0,0,0,0.75)]">
+              Chiến dịch truyền thông và thắp sáng cộng đồng về VIFC HCM
+            </span>
+          </a>
+        </nav>
       </section>
       <PartnersStatsSection />
       <StoriesStackSection />

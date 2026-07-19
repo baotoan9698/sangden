@@ -9,7 +9,7 @@ const sessions = [
     day: "VIFC Day 1",
     date: "19 / 06 / 2026",
     title: "Miền đất hứa vừa mở",
-    description: "Roundtable khai mạc Sáng Đèn — giới thiệu khung pháp lý VIFC, cơ hội đầu tư đầu tiên và cộng đồng IFC đang hình thành.",
+    description: "Buổi workshop đầu tiên định hình VIFC là gì và tại sao những người đến sớm là người quan trọng nhất?",
     guests: "Mirae Asset · MEXC · Deloitte · EY · Shinhan",
     gallery: [
       "/events/session-01/vifc-day-1-01.jpg",
@@ -25,19 +25,10 @@ const sessions = [
     description: "Các nhà đầu tư, chuyên gia và doanh nghiệp cùng giải mã dòng vốn mới, hạ tầng số và những cơ hội tiên phong tại TP.HCM.",
     guests: "Vietcombank · BNI Việt Nam · SVF · MBV",
     gallery: [
-      "/events/session-02/vifc-day-2-01.jpg",
-      "/events/session-02/vifc-day-2-02.jpg",
-      "/events/session-02/vifc-day-2-03.jpg",
+      "/events/session-02/vifc-day-2-networking.jpg",
+      "/events/session-02/vifc-day-2-audience.jpg",
+      "/events/session-02/vifc-day-2-presentation.jpg",
     ],
-  },
-  {
-    number: "03",
-    day: "VIFC Day 3",
-    date: "17 / 07 / 2026",
-    title: "Builder cùng thắp sáng",
-    description: "Buổi gặp gỡ dành cho thế hệ Builder đầu tiên — kết nối nguồn lực, chia sẻ sáng kiến và mở ra những hợp tác có giá trị lâu dài.",
-    guests: "FTU · TTXVN · SGGP · GOE Alliance",
-    gallery: ["/stories/stories-2.jpg", "/stories/stories-3.jpg", "/stories/stories-1.jpg"],
   },
 ];
 
@@ -48,8 +39,9 @@ export default function FirstSessionsSection() {
         <motion.p initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#9b6b20]/70">
           02 · Từ những buổi đầu tiên
         </motion.p>
-        <motion.h2 initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mt-7 max-w-4xl text-5xl font-semibold leading-[1.05] tracking-tight md:text-7xl lg:text-8xl">
-          Sáng Đèn đã bắt đầu.<br /><em className="font-normal italic text-black/40">Và tiếp tục sáng.</em>
+        <motion.h2 initial={{ opacity: 0, y: 35 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }} className="mt-7 text-center text-[clamp(1.8rem,6vw,6rem)] font-semibold leading-[1.05] tracking-tight">
+          <span className="block whitespace-nowrap">Sáng Đèn đã bắt đầu.</span>
+          <em className="mt-2 block font-normal italic text-black/40">Và tiếp tục sáng.</em>
         </motion.h2>
       </div>
 
