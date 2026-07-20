@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef } from "react";
+import { useCallback, useRef, useState } from "react";
 import ServicesSection from "./components/ServicesSection";
 import PartnersStatsSection from "./components/PartnersStatsSection";
 import StoriesStackSection from "./components/StoriesStackSection";
@@ -13,6 +13,7 @@ import Footer from "./components/Footer";
 const HERO_VIDEO = "/hero-video.mp4?v=1080p-slow90";
 
 export default function Index() {
+  const [registrationOpen, setRegistrationOpen] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   const animationRef = useRef<number | null>(null);
   const fadingOutRef = useRef(false);
@@ -77,11 +78,11 @@ export default function Index() {
       </section>
       <PartnersStatsSection />
       <StoriesStackSection />
-      <WaitlistSection />
+      <WaitlistSection onJoin={() => setRegistrationOpen(true)} />
       <FirstSessionsSection />
       <TracksSection />
       <ServicesSection />
-      <PioneerSection />
+      <PioneerSection formOpen={registrationOpen} onFormOpenChange={setRegistrationOpen} />
       <Footer />
     </main>
   );

@@ -12,13 +12,59 @@ const benefits = [
   { title: "Đặc quyền tại các sự kiện", text: "Ưu tiên chỗ ngồi, khu vực networking riêng và cơ hội tham gia các hoạt động trải nghiệm tại VIFC." },
 ];
 
-export default function PioneerSection() {
-  const [formOpen, setFormOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+type PioneerSectionProps = {
+  formOpen: boolean;
+  onFormOpenChange: (open: boolean) => void;
+};
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+export default function PioneerSection({ formOpen, onFormOpenChange }: PioneerSectionProps) {
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    setSubmitting(true);
+    setSubmitError("");
+    setSubmitted(false);
+
+    try {
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: formData.get("fullName"),
+          company: formData.get("company"),
+          email: formData.get("email"),
+          phone: formData.get("phone"),
+          primaryGoal: formData.get("primaryGoal"),
+          interests: formData.get("interests"),
+        }),
+      });
+
+      const result = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Không thể gửi đăng ký.");
+      }
+
+      form.reset();
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error
+          ? error.message
+          : "Có lỗi xảy ra khi gửi đăng ký.",
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -73,7 +119,7 @@ export default function PioneerSection() {
             type="button"
             aria-expanded={formOpen}
             aria-controls="pioneer-registration-form"
-            onClick={() => setFormOpen(true)}
+            onClick={() => onFormOpenChange(true)}
             className="mt-6 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#d6aa56] px-7 py-4 text-sm font-bold text-[#17130d] transition-colors hover:bg-[#e7c979]"
           >
             Đăng ký ngay
@@ -93,7 +139,7 @@ export default function PioneerSection() {
                 transition={{ duration: 0.25 }}
                 className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto p-4 md:p-8"
               >
-                <button type="button" aria-label="Đóng biểu mẫu đăng ký" onClick={() => setFormOpen(false)} className="absolute inset-0 bg-black/75 backdrop-blur-md" />
+                <button type="button" aria-label="Đóng biểu mẫu đăng ký" onClick={() => onFormOpenChange(false)} className="absolute inset-0 bg-black/75 backdrop-blur-md" />
                 <motion.form
                   onSubmit={handleSubmit}
                   initial={{ opacity: 0, y: 30, scale: 0.97 }}
@@ -102,7 +148,7 @@ export default function PioneerSection() {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="relative my-auto max-h-[calc(100vh-2rem)] w-full max-w-2xl overflow-y-auto rounded-[28px] border border-black/10 bg-[#f1ede3] p-5 text-[#17130d] shadow-[0_30px_100px_rgba(0,0,0,0.45)] md:max-h-[calc(100vh-4rem)] md:p-8"
                 >
-                  <button type="button" aria-label="Đóng" onClick={() => setFormOpen(false)} className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/60 transition hover:bg-white md:right-6 md:top-6">
+                  <button type="button" aria-label="Đóng" onClick={() => onFormOpenChange(false)} className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/60 transition hover:bg-white md:right-6 md:top-6">
                     <X size={18} />
                   </button>
                   <div className="mb-6">
@@ -147,13 +193,20 @@ export default function PioneerSection() {
                     <textarea name="interests" rows={4} placeholder="Chia sẻ ngắn về lĩnh vực, dự án hoặc kết nối bạn đang tìm kiếm..." className="mt-2 w-full resize-none rounded-xl border border-black/10 bg-white/70 px-4 py-3 text-sm leading-relaxed text-black outline-none transition focus:border-[#9b6b20]/60 focus:ring-2 focus:ring-[#d6aa56]/20" />
                   </label>
 
-                  <button type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#17130d] px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-[#9b6b20]">
-                    Gửi đăng ký <ArrowRight size={17} />
+                  <button disabled={submitting} type="submit" className="mt-5 inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#17130d] px-7 py-4 text-sm font-bold text-white transition-colors hover:bg-[#9b6b20] disabled:cursor-not-allowed disabled:opacity-60">
+                    {submitting ? "Đang gửi..." : "Gửi đăng ký"}
+                    {!submitting && <ArrowRight size={17} />}
                   </button>
 
                   {submitted && (
-                    <p role="status" className="mt-4 rounded-xl border border-[#9b6b20]/20 bg-[#d6aa56]/10 px-4 py-3 text-center text-xs leading-relaxed text-black/60">
-                      Form UI đã hoạt động. Dữ liệu hiện chưa được lưu; bước tiếp theo có thể kết nối với Google Sheets.
+                    <p role="status" className="mt-4 rounded-xl border border-[#9b6b20]/20 bg-[#d6aa56]/10 px-4 py-3 text-center text-xs leading-relaxed text-black/70">
+                      Đăng ký thành công! Thông tin của bạn đã được ghi nhận.
+                    </p>
+                  )}
+
+                  {submitError && (
+                    <p role="alert" className="mt-4 rounded-xl border border-red-700/20 bg-red-700/10 px-4 py-3 text-center text-xs leading-relaxed text-red-800">
+                      {submitError}
                     </p>
                   )}
                 </motion.form>

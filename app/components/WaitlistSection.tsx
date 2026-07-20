@@ -1,16 +1,13 @@
 "use client";
 
-import { FormEvent, useState } from "react";
 import { ArrowRight, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
-export default function WaitlistSection() {
-  const [submitted, setSubmitted] = useState(false);
+type WaitlistSectionProps = {
+  onJoin: () => void;
+};
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setSubmitted(true);
-  };
+export default function WaitlistSection({ onJoin }: WaitlistSectionProps) {
 
   return (
     <section className="relative flex min-h-[850px] items-start justify-center overflow-hidden bg-[#050606] px-6 pb-48 pt-28 text-center text-white md:min-h-[920px] md:pt-36">
@@ -44,19 +41,15 @@ export default function WaitlistSection() {
           <p className="text-xs uppercase tracking-[0.12em] text-white/45">người đăng ký</p>
         </div>
 
-        {submitted ? (
-          <div className="mt-10 rounded-2xl border border-[#d6aa56]/35 bg-[#d6aa56]/10 px-7 py-4 text-sm text-[#efd18e]">
-            Cảm ơn bạn! Thông tin tham gia waitlist đã được ghi nhận.
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-10 flex w-full max-w-xl flex-col overflow-hidden rounded-2xl border border-white/15 bg-black/45 p-1.5 shadow-2xl backdrop-blur-xl sm:flex-row" aria-label="Đăng ký VIFC waitlist">
-            <label htmlFor="waitlist-email" className="sr-only">Email của bạn</label>
-            <input id="waitlist-email" name="email" type="email" required autoComplete="email" placeholder="Nhập địa chỉ email của bạn" className="min-w-0 flex-1 bg-transparent px-5 py-4 text-sm text-white outline-none placeholder:text-white/35" />
-            <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} type="submit" className="flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-4 text-sm font-semibold text-black transition-colors hover:bg-[#eadcb9]">
-              Tham gia ngay <ArrowRight size={17} />
-            </motion.button>
-          </form>
-        )}
+        <motion.button
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          type="button"
+          onClick={onJoin}
+          className="mt-10 flex items-center justify-center gap-3 rounded-full bg-white px-9 py-4 text-sm font-semibold text-black shadow-2xl transition-colors hover:bg-[#eadcb9]"
+        >
+          Tham gia ngay <ArrowRight size={17} />
+        </motion.button>
       </motion.div>
     </section>
   );
