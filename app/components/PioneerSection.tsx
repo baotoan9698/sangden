@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Check, X } from "lucide-react";
 import Image from "next/image";
 import { FormEvent, useState } from "react";
+import { createPortal } from "react-dom";
 
 const benefits = [
   { title: "Danh xưng chính thống", text: "Được ghi nhận là Builder tiên phong của cộng đồng VIFC — bảo chứng bởi các đơn vị đồng hành uy tín." },
@@ -126,6 +127,7 @@ export default function PioneerSection({ formOpen, onFormOpenChange }: PioneerSe
             <ArrowRight size={17} />
           </button>
 
+          {typeof document !== "undefined" && createPortal(
           <AnimatePresence initial={false}>
             {formOpen && (
               <motion.div
@@ -212,7 +214,9 @@ export default function PioneerSection({ formOpen, onFormOpenChange }: PioneerSe
                 </motion.form>
               </motion.div>
             )}
-          </AnimatePresence>
+          </AnimatePresence>,
+          document.body,
+          )}
         </motion.div>
       </section>
     </>
