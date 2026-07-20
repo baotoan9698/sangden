@@ -10,9 +10,50 @@ const notoSans = Noto_Sans({
   display: "swap",
 });
 
+const title = "Chiến dịch Sáng Đèn - VIFC HCM";
+const description = "Chiến dịch truyền thông và thắp sáng cộng đồng VIFC HCM.";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL
+  ?? (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : "http://localhost:3000");
+
 export const metadata: Metadata = {
-  title: "Sáng Đèn — GOE Alliance",
-  description: "Chiến dịch truyền thông và thắp sáng cộng đồng về VIFC HCM.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  keywords: [
+    "Chiến dịch Sáng Đèn",
+    "VIFC HCM",
+    "Trung tâm Tài chính Quốc tế Việt Nam",
+    "cộng đồng VIFC",
+  ],
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    url: "/",
+    siteName: "Chiến dịch Sáng Đèn",
+    title,
+    description,
+    images: [
+      {
+        url: "/og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Chiến dịch Sáng Đèn - VIFC HCM kết nối Việt Nam với thế giới",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
