@@ -89,9 +89,9 @@ export default function PioneerSection({ formOpen, onFormOpenChange }: PioneerSe
       <section className="grid grid-cols-1 border-b border-black/10 bg-[#f1ede3] text-[#17130d] lg:grid-cols-2">
         <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.8 }} className="relative flex min-h-[620px] items-center justify-center overflow-hidden border-b border-black/10 bg-[#e5e0d6] p-10 lg:border-b-0 lg:border-r">
           <div className="absolute h-80 w-80 rounded-full bg-[#d6aa56]/20 blur-3xl" />
-          <div className="relative aspect-[1.5/1] w-full max-w-xl rotate-[-2deg] transition-transform duration-500 hover:rotate-0 hover:scale-[1.025]">
+          <div className="relative aspect-[2000/1259] w-full max-w-xl rotate-[-2deg] transition-transform duration-500 hover:rotate-0 hover:scale-[1.025]">
             <Image
-              src="/pioneer/ifc-pass-pioneer-card-transparent.png"
+              src="/pioneer/ifc-pass-pioneer-card-front-v2.png"
               alt="Thẻ IFC Pass The Pioneer"
               fill
               priority
