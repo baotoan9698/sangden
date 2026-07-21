@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const notoSans = Noto_Sans({
@@ -62,7 +63,21 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head>
         <link rel="preload" href="/hero-video.mp4" as="video" type="video/mp4" />
       </head>
-      <body className={notoSans.variable}>{children}</body>
+      <body className={notoSans.variable}>
+        {children}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-W01WN9C92X"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-W01WN9C92X');
+          `}
+        </Script>
+      </body>
     </html>
   );
 }
